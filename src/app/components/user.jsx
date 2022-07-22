@@ -1,8 +1,7 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
 import Qualitie from "./qualitie";
 import BookMark from "./bookmark";
-import { useState } from "react";
+import PropTypes from "prop-types";
 
 const User = ({
   name,
@@ -13,15 +12,8 @@ const User = ({
   rate,
   onDelete,
   bookmark,
-  onBookMark,
+  onToggleBookMark
 }) => {
-  const [bookmarkStatus, setBookmarkStatus] = useState(bookmark);
-
-  const handleBookmarkClick = () => {
-    setBookmarkStatus((prevstate) => !prevstate);
-    onBookMark(_id);
-  };
-
   return (
     <tr>
       <td>{name}</td>
@@ -37,7 +29,7 @@ const User = ({
         <button
           className="btn p-0"
           style={{ boxShadow: "none" }}
-          onClick={handleBookmarkClick}
+          onClick={() => onToggleBookMark(_id)}
         >
           <BookMark status={bookmark} />
         </button>
@@ -49,6 +41,18 @@ const User = ({
       </td>
     </tr>
   );
+};
+
+User.propTypes = {
+  name: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
+  qualities: PropTypes.array.isRequired,
+  profession: PropTypes.object.isRequired,
+  completedMeetings: PropTypes.number.isRequired,
+  rate: PropTypes.number.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  bookmark: PropTypes.bool.isRequired,
+  onToggleBookMark: PropTypes.func.isRequired
 };
 
 export default User;

@@ -1,5 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
+import PropTypes from "prop-types";
 
 const SearchStatus = ({ length }) => {
   const peopleWordRender = () => {
@@ -23,6 +23,10 @@ const SearchStatus = ({ length }) => {
       тобой сегодня
     </span>
   );
+};
+
+SearchStatus.propTypes = {
+  length: PropTypes.number.isRequired
 };
 
 export default SearchStatus;

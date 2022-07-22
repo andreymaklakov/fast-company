@@ -1,12 +1,17 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
+import PropTypes from "prop-types";
 
 const BookMark = ({ status }) => {
-  return status ? (
-    <i className="bi bi-bookmark-star-fill" style={{ fontSize: "30px" }}></i>
-  ) : (
-    <i className="bi bi-bookmark-star" style={{ fontSize: "30px" }}></i>
+  return (
+    <i
+      className={"bi bi-bookmark-star" + (status ? "-fill" : "")}
+      style={{ fontSize: "30px" }}
+    ></i>
   );
+};
+
+BookMark.propTypes = {
+  status: PropTypes.bool.isRequired
 };
 
 export default BookMark;
