@@ -20,6 +20,6 @@ module.exports = {
     ],
     quotes: ["error", "double", { allowTemplateLiterals: true }],
     semi: [2, "always"],
-    "multiline-ternary": ["error", "never"]
+    "multiline-ternary": ["off"]
   }
 };
