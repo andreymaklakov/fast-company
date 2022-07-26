@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import api from "./api";
 import Users from "./components/users";
-import SearchStatus from "./components/searchStatus";
 
 function App() {
-  const [users, setUsers] = useState(api.users.fetchAll());
+  const [users, setUsers] = useState();
+
+  useEffect(() => {
+    api.users.fetchAll().then((data) => {
+      setUsers(data);
+    });
+  }, []);
 
   const handleDelete = (id) => {
     setUsers((prevState) => prevState.filter((user) => user._id !== id));
@@ -24,14 +29,13 @@ function App() {
 
   return (
     <div>
-      <h2>
-        <SearchStatus length={users.length} />
-      </h2>
-      <Users
-        users={users}
-        onDelete={handleDelete}
-        onToggleBookMark={handleToggleBookMark}
-      />
+      {users && (
+        <Users
+          users={users}
+          onDelete={handleDelete}
+          onToggleBookMark={handleToggleBookMark}
+        />
+      )}
     </div>
   );
 }

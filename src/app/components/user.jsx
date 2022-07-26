@@ -35,7 +35,12 @@ const User = ({
         </button>
       </td>
       <td>
-        <button className="btn btn-danger" onClick={() => onDelete(_id)}>
+        <button
+          className="btn btn-danger"
+          onClick={() => {
+            onDelete(_id);
+          }}
+        >
           Delete
         </button>
       </td>

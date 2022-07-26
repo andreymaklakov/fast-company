@@ -18,7 +18,7 @@ const SearchStatus = ({ length }) => {
   return length === 0 ? (
     <span className="badge bg-danger">Никто с тобой не тусанет</span>
   ) : (
-    <span className="badge bg-primary">
+    <span className={"badge bg-primary"}>
       {length} {peopleWordRender()} {length === 1 ? "тусанет" : "тусанут"} с
       тобой сегодня
     </span>
